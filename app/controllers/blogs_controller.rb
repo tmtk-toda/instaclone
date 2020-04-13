@@ -5,8 +5,9 @@ class BlogsController < ApplicationController
   end
   def new
     # @blog = Blog.new
-    @blog = current_user.blogs.build(blog_params)
+    @blog = current_user.blogs.build
   end
+
   # def create
   #   # Task.create(task_params)
   #   # @blog = current_user.blogs.build(blog_params)
