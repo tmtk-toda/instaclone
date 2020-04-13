@@ -4,14 +4,18 @@ class BlogsController < ApplicationController
     @blogs = Blog.all
   end
   def new
-    @blog = Blog.new
+    # @blog = Blog.new
+    @blog = current_user.blogs.build(blog_params)
   end
+  # def create
+  #   # Task.create(task_params)
+  #   # @blog = current_user.blogs.build(blog_params)
+  #   # @blog.save
+  #   # redirect_to blogs_path
+  # end
   def create
-    Task.create(task_params)
-    redirect_to new_task_path
-  end
-  def create
-    @blog = Blog.new(blog_params)
+    # @blog = Blog.new(blog_params)
+    @blog = current_user.blogs.build(blog_params)
     if @blog.save
       redirect_to blogs_path, notice: "ブログを作成しました！"
     else
@@ -21,18 +25,18 @@ class BlogsController < ApplicationController
   def show
     @blog = Blog.find(params[:id])
   end
-  def create
-    @blog = Blog.new(blog_params)
-    if params[:back]
-      render :new
-    else
-      if @blog.save
-        redirect_to blogs_path, notice: "ブログを作成しました！"
-      else
-        render :new
-      end
-    end
-  end
+  # def create
+  #   @blog = Blog.new(blog_params)
+  #   if params[:back]
+  #     render :new
+  #   else
+  #     if @blog.save
+  #       redirect_to blogs_path, notice: "ブログを作成しました！"
+  #     else
+  #       render :new
+  #     end
+  #   end
+  # end
   def edit
     @blog = Blog.find(params[:id])
   end
@@ -49,12 +53,13 @@ class BlogsController < ApplicationController
   redirect_to blogs_path, notice:"ブログを削除しました！"
   end
   def confirm
-    @blog = Blog.new(blog_params)
+    # @blog = Blog.new(blog_params)
+    @blog = current_user.blogs.build(blog_params)
     render :new if @blog.invalid?
   end
   private
   def blog_params
-    params.require(:blog).permit(:title, :content)
+    params.require(:blog).permit(:title, :content, :image, :image_cache)
   end
   def set_blog
     @blog = Blog.find(params[:id])
