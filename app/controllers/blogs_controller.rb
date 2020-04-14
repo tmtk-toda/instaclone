@@ -7,13 +7,6 @@ class BlogsController < ApplicationController
     # @blog = Blog.new
     @blog = current_user.blogs.build
   end
-
-  # def create
-  #   # Task.create(task_params)
-  #   # @blog = current_user.blogs.build(blog_params)
-  #   # @blog.save
-  #   # redirect_to blogs_path
-  # end
   def create
     # @blog = Blog.new(blog_params)
     @blog = current_user.blogs.build(blog_params)
@@ -26,18 +19,6 @@ class BlogsController < ApplicationController
   def show
     @blog = Blog.find(params[:id])
   end
-  # def create
-  #   @blog = Blog.new(blog_params)
-  #   if params[:back]
-  #     render :new
-  #   else
-  #     if @blog.save
-  #       redirect_to blogs_path, notice: "ブログを作成しました！"
-  #     else
-  #       render :new
-  #     end
-  #   end
-  # end
   def edit
     @blog = Blog.find(params[:id])
   end
