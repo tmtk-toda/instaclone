@@ -1,0 +1,22 @@
+<h1 class ="top">お気に入り一覧</h1>
+<p><%= notice %></p>
+<table>
+  <tr>
+    <th>タイトル</th>
+    <th>内容</th>
+  </tr>
+  <% @favorites.each do |favorite| %>
+    <tr>
+      <td>タイトル：<%= favorite.blog.title %></td>
+      <td>内容：<%= favorite.blog.content %></td>
+      <td><%= favorite.blog.user.name %>の投稿</td>
+    </tr>
+    <table>
+      <% if favorite.blog.image.present? %>
+      <td><%= image_tag favorite.blog.image.url %></td>
+      <% end %>
+    </table>
+  <% end %>
+
+</table>
+<h3><%= link_to "投稿一覧画面にもどる", blogs_path %></h3>
