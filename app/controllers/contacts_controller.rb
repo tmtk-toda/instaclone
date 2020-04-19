@@ -34,7 +34,7 @@ class ContactsController < ApplicationController
   end
 
 
-  end
+
 
   # PATCH/PUT /contacts/1
   # PATCH/PUT /contacts/1.json
