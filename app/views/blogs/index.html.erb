@@ -11,8 +11,10 @@
     <td>内容：<%= blog.content %></td>
     <td><%= blog.user.name %>の投稿</td>
     <td><%= link_to '詳細を確認', blog_path(blog.id) %></td>
+    <% if blog.user_id == current_user.id %>
     <td><%= link_to "投稿を編集", edit_blog_path(blog.id), data: { confirm: '本当に編集していいですか？' } %></td>
     <td><%= link_to '投稿を削除', blog_path(blog.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>
+    <% end %>
   </tr>
   <table>
     <% if blog.image.present? %>
