@@ -15,12 +15,12 @@ class BlogsController < ApplicationController
     else
       render :new
     end
-    if @blog.save
-      ContactMailer.contact_mail(@blog).deliver  ##追記
-      # redirect_to blogs_path, notice: 'メールが送られました'
-    else
-      render :new
-    end
+    # if @blog.save
+    #   ContactMailer.contact_mail(@blog).deliver  ##追記
+    #   # redirect_to blogs_path, notice: 'メールが送られました'
+    # else
+    #   render :new
+    # end
   end
   def show
     @blog = Blog.find(params[:id])
