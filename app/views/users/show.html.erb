@@ -6,7 +6,4 @@
 
 <h3><%= link_to "投稿一覧画面へ", blogs_path %></h3>
 <h3><%= link_to "お気に入り一覧画面へ", favorites_path %></h3>
-<% if @user.id == current_user.id %>
 <h3><%= link_to "ページの編集", edit_user_path %></h3>
-<% else %>
-<% end %>
